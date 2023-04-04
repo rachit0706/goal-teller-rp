@@ -1,0 +1,19 @@
+.list-item {
+    list-style-type: none;
+    padding: .4rem;
+    border: 1px solid black;
+    border-radius: 2px;
+    margin: 0 0 .3rem 0;
+    cursor: pointer;
+}
+
+.list-item div{
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-size: 14px;
+}
+
+.scheme-name {
+    font-weight: 600;
+}

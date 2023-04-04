@@ -1,23 +1,29 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
+import Portfolio from './components/Portfolio/Portfolio';
+import axios from 'axios';
+
+const LIST_API = "https://api.mfapi.in/mf";
 
 function App() {
+  const [list, setList] = useState([]);
+
+  const fetchList = async () => {
+    try {
+        const response = await axios.get(LIST_API);
+        setList(response.data);
+    } catch (e) {
+        alert(e);
+    }
+};
+
+useEffect(() => { 
+    fetchList();
+}, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Portfolio data={list} />
     </div>
   );
 }
